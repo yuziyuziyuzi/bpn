@@ -6,7 +6,6 @@
   <title>Document</title>
 
   <!-- Required meta tags -->
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
@@ -45,7 +44,7 @@
         </thead>
         <tbody>
           <tr>
-            <td rowspan="2"><input type="text"></td>
+            <td rowspan="2"><input type="text" id="startDate"><br/><button id="today">今日</button></td>
             <td>1回目</td>
             <td><input type="text" maxlength="3" class="mor-max">/<input type="text" maxlength="3" class="mor-min"></td>
             <td><input type="text" maxlength="3" class="mor-pul"></td>
@@ -60,7 +59,22 @@
             <td><input type="text" maxlength="3" class="ngt-pul"></td>
           </tr>
           <tr>
-            <td rowspan="2"></td>
+            <td rowspan="2" class="day"></td>
+            <td>1回目</td>
+            <td><input type="text" maxlength="3" class="mor-max">/<input type="text" maxlength="3" class="mor-min"></td>
+            <td><input type="text" maxlength="3" class="mor-pul"></td>
+            <td><input type="text" maxlength="3" class="ngt-max">/<input type="text" maxlength="3" class="ngt-min"></td>
+            <td><input type="text" maxlength="3" class="ngt-pul"></td>
+          </tr>
+          <tr>
+            <td>2回目</td>
+            <td><input type="text" maxlength="3" class="mor-max">/<input type="text" maxlength="3" class="mor-min"></td>
+            <td><input type="text" maxlength="3" class="mor-pul"></td>
+            <td><input type="text" maxlength="3" class="ngt-max">/<input type="text" maxlength="3" class="ngt-min"></td>
+            <td><input type="text" maxlength="3" class="ngt-pul"></td>
+          </tr>
+          <tr>
+            <td rowspan="2" class="day"></td>
             <td>1回目</td>
             <td><input type="text" maxlength="3" class="mor-max">/<input type="text" maxlength="3" class="mor-min"></td>
             <td><input type="text" maxlength="3" class="mor-pul"></td>
@@ -78,6 +92,9 @@
             <td></td>
             <td>平均値</td>
             <td><span id="max-ave">-</span>/<span id="min-ave">-</span></td>
+            <td></td>
+            <td>平均値</td>
+            <td><span id="max-ave2">-</span>/<span id="min-ave2">-</span></td>
           </tr>
         </tbody>
       </table>  

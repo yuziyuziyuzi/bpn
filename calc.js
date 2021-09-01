@@ -1,128 +1,177 @@
 (function() {
   'use strict';
+
+    var max = [];
+    var min = [];
+    var pulse = [];
+    var nightmax = [];
+    var nightmin = [];
+    var nightpulse = [];
+    var lastmax = 0;
+    var lastmin = 0;
+    var lastpulse = 0;
+    var lastnightmax = 0;
+    var lastnightmin = 0;
+    var lastpulse2 = 0;
+
+
+
+
+    max = document.getElementsByClassName("max");
+    min = document.getElementsByClassName("min");
+    pulse = document.getElementsByClassName("pulse");
+    nightmax = document.getElementsByClassName("nightmax");
+    nightmin = document.getElementsByClassName("nightmin");
+    nightpulse = document.getElementsByClassName("nightpulse");
+    lastmax = document.getElementById("lastmax");
+
+//クラスで定義したらクラスネームでとる
+
+// blood.push = (document.getElementById('min4'));
+
+//  ここの　＝　はいらない！！　↑は修正した。　blood.push = (document.getElementById('min4'));
+
+//exchangeは平均出す。dayは今日の日にち出す
+  let btn = document.getElementById('exchange');
+
+  let day = document.getElementById('day');
+
+
+// btnの要素をゲットしていなかった！！！
+
+//ここに関数入れていく！！ボタン押すと呼ばれる関数！！
+  btn.onclick = function(){
+    maxmax(max,"lastmax");
+    maxmax(min,"lastmin");
+    maxmax(pulse,"lastpulse"); 
+    maxmax(nightmax,"lastnightmax");
+    maxmax(nightmin,"lastnightmin");
+    maxmax(nightpulse,"lastpulse2");
+  }
+
+  // ボタンクリックしたときの処理  maxの平均用
+
+  function maxmax(data, output){
+
+  //   ↓　　parseIntは文字列を数値に変換するのだ！！
   
-  // デバッグ用ボタン
-  const btn = document.getElementById('test');
 
-  // 平均値表示箇所
-  const maxEdit = document.getElementById('max-ave');
-  const minEdit = document.getElementById('min-ave');
+  var num = 0;
+  var sum = 0;
+  var answer = 0;
+  for(var i = 0; i < data.length; i++){
+   // insNaNは非数かどうか見分ける
+  if(!isNaN(data[i].value)&& data[i].value.length >0 ){
+   
+    sum += (parseInt( data[i].value));//valeu1で入力した値を取ってる
+    num++;
 
-  // 日付関連
-  const todayBtn = document.getElementById('today');
-  const dateEdit = document.getElementById('startDate');
-  let day = document.getElementsByClassName("day");
+    }
 
-  // 各データ
-  let maxData = document.getElementsByClassName("mor-max");
-  let minData = document.getElementsByClassName("mor-min");
-  const lenMax = maxData.length;
-  const lenMin = minData.length;
-
-  // 血圧データのコールバック設定
-  for (let i=0; i<lenMax; i++) {
-    // 最大側のエディットボックスでchangeイベントが発生したら最大値を再演算
-    maxData[i].onchange = calcMax;
-  }
-  for (let i=0; i<lenMin; i++) {
-    // 最小側のエディットボックスでchangeイベントが発生したら最小値を再演算
-    minData[i].onchange = calcMin;
   }
 
-  // テスト用ボタン(クリック時に動作)
-  btn.onclick = calc;
+  answer = sum/num;
 
-  // 「今日」ボタンクリック時の処理
-  todayBtn.onclick = function() {
-    // 今日の日付情報を取得
-    let today = new Date();
-    // 今日のデータを一番上の日付エディットボックスに設定
-    dateEdit.value = month_day(today);
 
-    // 一番上以外の日付情報更新(onchange呼ばれないので自前でコール)
-    updateDate();
-  };
+document.getElementById( output ).value = answer;
 
-  // 一番上以外の日付情報のchangeイベント設定(手動で更新された場合)
-  dateEdit.onchange = updateDate;
+   alert(answer);  // これはテスト用
+  }
+
+
+
+// day.onclick = function(){   //ここの関数で今日の日にちをボタン押すと自動入力する。
+
+//   var today  = new Date();　//ここではミリ秒で値を取得
+//   var month  = today.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
+//   var date　 = today.getDate();//現在の日を取得ここは＋１いらない
   
-  // 日付情報更新処理
-  function updateDate() {
-    // まず今日のデータを取得する
-    let today = new Date();
 
-    // エディットボックスのデータをDateオブジェクトに変換
-    // ここに日付しかない場合は年が2001年に設定される
-    let date = new Date(dateEdit.value);
 
-    // dateは2001年になっているので、年を今現在のデータに修正する
-    date.setFullYear(today.getFullYear());
+//  var target   = document.getElementById( "day1" ); //IDを変数に代入
 
-    // 残りの日付情報更新
-    // dayは一番上以外の要素が入っている(一番上はinput要素、それ以外はtd要素)
-    for (let i=0; i<day.length; i++) {
-      // dateに1日足す
-      today.setDate(today.getDate() + 1);   // 月末に+1してもこれでうまく行く
+ 
+//  target.value =  month + "/" + date;//ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
 
-      // tdに設定
-      day[i].innerHTML = month_day(today);  // 整形はmonth_dayで実施
-    }
+//  var target1   = document.getElementById( "day2" );
+
+ 
+//  today.setDate(today.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
+
+                
+
+//  month   = today.getMonth()+1;
+//  date    = today.getDate();
+
+// target1.innerHTML =  month + "/" + date;// innerHTMLはHTMLに直接書き込む　valueは入力フォーマとがある時に使用する。
+
+
+// }
+
+
+
+
+var daymax = [];
+daymax = document.getElementsByClassName("day1"); //クラスの値を渡す
+
+day.onclick = function()
+{
+  daymaxx(daymax,"day1");//関数処理
+}
+
+
+function daymaxx(getday,dayclass) //関数前にはfunction記載しておくことエラーでる
+{
+
+  var today  = new Date();　//ここではミリ秒で値を取得
+  var month  = today.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
+  var date　 = today.getDate();//現在の日を取得ここは＋１いらない
+
+  daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
+
+  for(var i = 1; i < getday.length; i++ )
+  {
+
+    today.setDate(today.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
+    month   = today.getMonth()+1;
+     date    = today.getDate();
+     daymax[i].value =  month + "/" + date;     
+
+  }
+ 
+}
+var get3 = [];//変数宣言
+get3 = document.getElementsByClassName("day1")//エディットボックスの値を取得する 配列を返す
+
+get3[0].onchange = function()// onchangeで日にちを入れるとイベント発生する 
+{
+ dayget("day1");//関数呼ぶ
+}
+function dayget(getget)//この関数で入力した日にちから+された値がでる
+{
+  // alert(get1);  // これはテスト用
+  var newget1 = new Date(get3[0].value);//☆　ここは３回覚えていない注意点　valueはエディットボックスに入力した値を取る
+  //概要　違う年（2001年）を取得してしまうため、今の年にしたい。
+  //➀今日の日付情報を取得する。new　Date()で取得する
+    var today  =  new Date()
+  //➁　➀のデータから年を取得する。getfullyear()で取得する。
+    var yearget = today.getFullYear()
+  //⓷　➁をnewget1の年に反映する。
+      newget1.setFullYear(yearget)
+
+  //setfullyear入れる。
+//for文で入力した日にちの続きを出力したい。↓
+  for(var i = 1; i < get3.length; i++ )//ここで+1してるのは1からスタートしてるため
+  {
+//for文で個々の値をフォーマットに出力する。
+    newget1.setDate(newget1.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
+    var month  = newget1.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
+    var date　 = newget1.getDate();//現在の日を取得ここは＋１いらない
+    get3[i].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
+
   }
 
-  // 日付情報を整形("month/day")の形にする
-  function month_day(date) {
-    // getMonthは0始まりの月を返す(0=1月)
-    // getDateは日付を返す
-    return `${date.getMonth()+1}/${date.getDate()}`;
-  }
 
-  // 最大値最小値の平均値更新
-  function calc() {
-    calcMax();
-    calcMin();
-  }
+}
 
-  // 最大値の平均値計算
-  function calcMax() {
-    calcData(maxData, maxEdit);
-  }
-
-  // 最小値の平均値計算
-  function calcMin() { 
-    calcData(minData, minEdit);
-  }
-
-  // 平均値計算
-  // data: エディットボックスの配列
-  // output: 平均の出力先(td要素を想定)
-  function calcData(data, output) {
-    // 母数と平均値を0で初期化
-    let num = 0;
-    let sum = 0;
-    
-    // 入力値から平均値を求める
-    for (let i=0; i<data.length; i++) {
-      if (!isNaN(data[i].value)       // 文字列(maxData[i].value)が数字かどうか
-                                      // isNaNは文字列が非数ならtrueを返す
-                                      // ので、!をつけて数字ならtrueを返す
-                                      // ただし、空文字は数字扱いにされる 
-       && data[i].value.length > 0) { // ↑が空文字だと抜けてくるので、文字列の長さを見て、0より大きければ
-                                      // 空文字じゃないので、それ以降の処理をする
-
-        // 入力値を数値に変換して合計に加算
-        sum += parseInt(data[i].value);
-        // 計算できた入力数をインクリメント
-        num++;
-      }
-    }
-
-    // 計算できる要素がなかった場合(0割防止)
-    if (num === 0) {
-      // なにもしない
-    }
-    else {
-      // 平均値を計算しtd内に設定
-      output.innerHTML = sum / num;
-    }
-  }
 })();

@@ -131,7 +131,7 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
 
   daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
 
-  document.cookie = 'name=daymax[0].value'; //cookieに値を保存
+  document.cookie = `name=${daymax[0].value}`; //cookieに値を保存  バッククォート使用 シフト＋＠
 
 
   for(var i = 1; i < getday.length; i++ )

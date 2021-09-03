@@ -119,7 +119,7 @@ day.onclick = function()
   daymaxx(daymax,"day1");//関数処理
 }
 
-document.cookie = 'name=太郎'; //cookieに値を保存
+
 
 
 function daymaxx(getday,dayclass) //関数前にはfunction記載しておくことエラーでる
@@ -130,6 +130,8 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
   var date　 = today.getDate();//現在の日を取得ここは＋１いらない
 
   daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
+
+  document.cookie = 'name=daymax[0].value'; //cookieに値を保存
 
 
   for(var i = 1; i < getday.length; i++ )

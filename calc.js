@@ -128,10 +128,12 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
   var today  = new Date();　//ここではミリ秒で値を取得
   var month  = today.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
   var date　 = today.getDate();//現在の日を取得ここは＋１いらない
-
+  var cookiebox ;// クッキーの値取得する変数
   daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
 
-  document.cookie = `name=${daymax[0].value}`; //cookieに値を保存  バッククォート使用 シフト＋＠
+  document.cookie = `name=${daymax[0].value}`; //cookieに値を保存  バッククォート使用 シフト＋＠ cookieの値取得する
+
+     cookiebox = document.cookie.split(';'); //cookieの値を取得
 
 
   for(var i = 1; i < getday.length; i++ )

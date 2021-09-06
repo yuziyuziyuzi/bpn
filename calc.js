@@ -134,6 +134,7 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
   document.cookie = `name=${daymax[0].value}`; //cookieに値を保存  バッククォート使用 シフト＋＠ cookieの値取得する
 
      cookiebox = document.cookie.split(';'); //cookieの値を取得
+     var content = value.split('=');
 
 
   for(var i = 1; i < getday.length; i++ )

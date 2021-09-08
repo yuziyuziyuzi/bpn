@@ -116,13 +116,13 @@ daymax = document.getElementsByClassName("day1"); //クラスの値を渡す
 
 day.onclick = function()
 {
-  daymaxx(daymax,"day1");//関数処理
+  daymaxx();//関数処理
 }
 
 
 
 
-function daymaxx(getday,dayclass) //関数前にはfunction記載しておくことエラーでる
+function daymaxx() //関数前にはfunction記載しておくことエラーでる
 {
 
   var today  = new Date();　//ここではミリ秒で値を取得
@@ -138,7 +138,7 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
     
 
 
-  for(var i = 1; i < getday.length; i++ )
+  for(var i = 1; i < daymax.length; i++ )
   {
 
     today.setDate(today.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
@@ -150,25 +150,27 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
  
 }
 
+
+
+
+
 var cookiebox;// クッキーの値取得する変数
 var cookieabc = [];
-var cookie2 = [];
 
 　//cookieの値を読みだして日にちのところに保存する
 　cookiebox = document.cookie;　// 1 cookieの値を変数に入れる
 
   cookieabc   = cookiebox.split('=');//cookieの値を分ける  //２ cookieをばらして日にち情報を取得する
-  
-
-   
-   
-
  　daymax[0].value　= cookieabc[1];//3エディットボックスに反映  cookieの値を反映する
 
- 　　   　
- 
 
- 　
+ var today  = new Date();　//ここではミリ秒で値を取得
+  var month  = today.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
+  var date　 = today.getDate();//現在の日を取得ここは＋１いらない
+  
+  daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
+
+  dayget("day1");//関数呼ぶ function dayget()に飛ぶ
 
 
 
@@ -178,9 +180,9 @@ get3 = document.getElementsByClassName("day1")//エディットボックスの�
 
 get3[0].onchange = function()// onchangeで日にちを入れるとイベント発生する 
 {
- dayget("day1");//関数呼ぶ
+ dayget();//関数呼ぶ
 }
-function dayget(getget)//この関数で入力した日にちから+された値がでる
+function dayget()//この関数で入力した日にちから+された値がでる
 {
   // alert(get1);  // これはテスト用
   var newget1 = new Date(get3[0].value);//☆　ここは３回覚えていない注意点　valueはエディットボックスに入力した値を取る

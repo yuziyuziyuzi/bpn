@@ -170,13 +170,15 @@ var cookieabc = [];
   
   daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
 
-  dayget("day1");//関数呼ぶ function dayget()に飛ぶ
+  
 
 
 
 
 var get3 = [];//変数宣言
 get3 = document.getElementsByClassName("day1")//エディットボックスの値を取得する 配列を返す
+
+dayget("day1");//関数呼ぶ function dayget()に飛ぶ
 
 get3[0].onchange = function()// onchangeで日にちを入れるとイベント発生する 
 {

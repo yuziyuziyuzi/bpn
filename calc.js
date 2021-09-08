@@ -178,10 +178,11 @@ var cookieabc = [];
 var get3 = [];//変数宣言
 get3 = document.getElementsByClassName("day1")//エディットボックスの値を取得する 配列を返す
 
-dayget("day1");//関数呼ぶ function dayget()に飛ぶ
+dayget();//関数呼ぶ function dayget()に飛ぶ
 
 get3[0].onchange = function()// onchangeで日にちを入れるとイベント発生する 
 {
+  document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
  dayget();//関数呼ぶ
 }
 function dayget()//この関数で入力した日にちから+された値がでる
@@ -205,7 +206,6 @@ function dayget()//この関数で入力した日にちから+された値がで
     var month  = newget1.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
     var date　 = newget1.getDate();//現在の日を取得ここは＋１いらない
     get3[i].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
-
   }
 
 

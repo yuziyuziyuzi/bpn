@@ -131,8 +131,8 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
   
   daymax[0].value =  month + "/" + date;     //ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
 
-  document.cookie = `name=${daymax[0].value}`; //cookieに値を保存     バッククォート使用 シフト＋＠ 
-  //cookieの値を取得して
+  document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
+  
 
 
     
@@ -144,17 +144,32 @@ function daymaxx(getday,dayclass) //関数前にはfunction記載しておくこ
     today.setDate(today.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
     month   = today.getMonth()+1;
      date    = today.getDate();
-     daymax[i].value =  month + "/" + date;     
+     daymax[i].value =  month + "/" + date;  //日にちの一番   
 
   }
  
 }
 
 var cookiebox;// クッキーの値取得する変数
+var cookieabc = [];
+var cookie2 = [];
+
 　//cookieの値を読みだして日にちのところに保存する
-　cookiebox = document.cookie;
- alert(cookiebox);  // これはテスト用
- 　　daymax[0].value　= cookiebox;//cookieの値を反映する
+　cookiebox = document.cookie;　// 1 cookieの値を変数に入れる
+
+  cookieabc   = cookiebox.split('=');//cookieの値を分ける  //２ cookieをばらして日にち情報を取得する
+  
+
+   
+   
+
+ 　daymax[0].value　= cookieabc[1];//3エディットボックスに反映  cookieの値を反映する
+
+ 　　   　
+ 
+
+ 　
+
 
 
 

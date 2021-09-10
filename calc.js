@@ -15,8 +15,6 @@
     var lastpulse2 = 0;
 
 
-
-
     max = document.getElementsByClassName("max");
     min = document.getElementsByClassName("min");
     pulse = document.getElementsByClassName("pulse");
@@ -31,14 +29,14 @@
 
 //  ここの　＝　はいらない！！　↑は修正した。　blood.push = (document.getElementById('min4'));
 
-//exchangeは平均出す。dayは今日の日にち出す
+//idを変数に入れる処理
   let btn = document.getElementById('exchange');
-
   let day = document.getElementById('day');
+  let cookiebtn = document.getElementById('cookie');
 
 
 // btnの要素をゲットしていなかった！！！
-
+/*-----------------------------------------------------------------------------------*/
 //ここに関数入れていく！！ボタン押すと呼ばれる関数！！
   btn.onclick = function(){
     maxmax(max,"lastmax");
@@ -49,9 +47,9 @@
     maxmax(nightpulse,"lastpulse2");
   }
 
-  // ボタンクリックしたときの処理  maxの平均用
+  
 
-  function maxmax(data, output){
+function maxmax(data, output){ // ボタンクリックしたときの処理  maxの平均用
 
   //   ↓　　parseIntは文字列を数値に変換するのだ！！
   
@@ -61,52 +59,23 @@
   var answer = 0;
   for(var i = 0; i < data.length; i++){
    // insNaNは非数かどうか見分ける
-  if(!isNaN(data[i].value)&& data[i].value.length >0 ){
+      if(!isNaN(data[i].value)&& data[i].value.length >0 ){
    
-    sum += (parseInt( data[i].value));//valeu1で入力した値を取ってる
-    num++;
+        sum += (parseInt( data[i].value));//valeu1で入力した値を取ってる
+        num++;
 
-    }
+      }
 
   }
 
   answer = sum/num;
-
-
-document.getElementById( output ).value = answer;
+  document.getElementById( output ).value = answer;
 
    alert(answer);  // これはテスト用
-  }
+}
 
+/*-------------------------------------------------------------------*/
 
-
-// day.onclick = function(){   //ここの関数で今日の日にちをボタン押すと自動入力する。
-
-//   var today  = new Date();　//ここではミリ秒で値を取得
-//   var month  = today.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
-//   var date　 = today.getDate();//現在の日を取得ここは＋１いらない
-  
-
-
-//  var target   = document.getElementById( "day1" ); //IDを変数に代入
-
- 
-//  target.value =  month + "/" + date;//ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
-
-//  var target1   = document.getElementById( "day2" );
-
- 
-//  today.setDate(today.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
-
-                
-
-//  month   = today.getMonth()+1;
-//  date    = today.getDate();
-
-// target1.innerHTML =  month + "/" + date;// innerHTMLはHTMLに直接書き込む　valueは入力フォーマとがある時に使用する。
-
-
-// }
 
 
 
@@ -114,13 +83,12 @@ document.getElementById( output ).value = answer;
 var daymax = [];
 daymax = document.getElementsByClassName("day1"); //クラスの値を渡す
 
-day.onclick = function()
+day.onclick = function()//ボタン押したら処理する
 {
   daymaxx();//関数処理
 }
 
-
-
+/*-------------------------------------------------------------------*/
 
 function daymaxx() //関数前にはfunction記載しておくことエラーでる
 {
@@ -134,10 +102,6 @@ function daymaxx() //関数前にはfunction記載しておくことエラーで
   document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
   
 
-
-    
-
-
   for(var i = 1; i < daymax.length; i++ )
   {
 
@@ -149,25 +113,19 @@ function daymaxx() //関数前にはfunction記載しておくことエラーで
   }
  
 }
+/*-------------------------------------------------------------------*/
 
 
 
 
-
-var cookiebox;// クッキーの値取得する変数
-var cookieabc = [];
+  var cookiebox;// クッキーの値取得する変数
+  var cookieabc = [];
 
 　//cookieの値を読みだして日にちのところに保存する
 　cookiebox = document.cookie;　// 1 cookieの値を変数に入れる
 
   cookieabc   = cookiebox.split('=');//cookieの値を分ける  //２ cookieをばらして日にち情報を取得する
  　daymax[0].value　= cookieabc[1];//3エディットボックスに反映  cookieの値を反映する
-
-
- 
-
-  
-
 
 
 
@@ -181,6 +139,8 @@ get3[0].onchange = function()// onchangeで日にちを入れるとイベント�
   document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
  dayget();//関数呼ぶ
 }
+
+/*------------------------------------------------------------------------------------*/
 function dayget()//この関数で入力した日にちから+された値がでる
 {
   // alert(get1);  // これはテスト用
@@ -194,10 +154,10 @@ function dayget()//この関数で入力した日にちから+された値がで
       newget1.setFullYear(yearget)
 
   //setfullyear入れる。
-//for文で入力した日にちの続きを出力したい。↓
+  //for文で入力した日にちの続きを出力したい。↓
   for(var i = 1; i < get3.length; i++ )//ここで+1してるのは1からスタートしてるため
   {
-//for文で個々の値をフォーマットに出力する。
+    //for文で個々の値をフォーマットに出力する。
     newget1.setDate(newget1.getDate() + 1);  //  これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででるので85行目と同じようにする
     var month  = newget1.getMonth()+1;//現在の月の数字を取得＋1は0から開始のため
     var date　 = newget1.getDate();//現在の日を取得ここは＋１いらない
@@ -206,5 +166,29 @@ function dayget()//この関数で入力した日にちから+された値がで
 
 
 }
+
+  /*-----------------------------------------------------------------------------------*/
+
+  cookie.onclick = function(){　//cookieに保存ボタン押した時の処理
+var a = "";
+    for(var i = 0; i <= 11; i++){
+//console.log(i+"\n");
+     a += max[i].value+','+min[i].value+','+pulse[i].value+','+nightmax[i].value+','+nightmin[i].value+','+nightpulse[i].value;
+    }
+    
+
+     //血圧データを入力したときにcookieを保存
+      document.cookie  = `cookie=${a}`;
+
+
+      
+  
+
+  }
+
+
+
+
+
 
 })();

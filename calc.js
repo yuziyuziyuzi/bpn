@@ -173,7 +173,7 @@ function dayget()//この関数で入力した日にちから+された値がで
 var a = "";
     for(var i = 0; i <= 11; i++){
 //console.log(i+"\n");
-     a += max[i].value+','+min[i].value+','+pulse[i].value+','+nightmax[i].value+','+nightmin[i].value+','+nightpulse[i].value;
+     a += max[i].value+','+min[i].value+','+pulse[i].value+','+nightmax[i].value+','+nightmin[i].value+','+nightpulse[i].value+',';
     }
     
 

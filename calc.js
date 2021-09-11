@@ -109,7 +109,8 @@
   var get3 = [];                                                            //変数宣言
   get3 = document.getElementsByClassName("day1")                            //エディットボックスの値を取得する day1はエディットボックス左上のこと
 
- dayget();                                                                 //関数呼ぶ 
+ dayget();         
+ cookiecool();                                                        //関数呼ぶ 
 
   get3[0].onchange = function()                                             // onchangeで日にち箇所にデータを入れるとイベント発生する 
   {

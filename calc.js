@@ -163,7 +163,7 @@
   cookiecool();  
 
   // 左上の日付情報が変わったときの処理
-  get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する 
+  get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する
   {
     alert("!");  // これはテスト用
     document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
@@ -190,7 +190,6 @@
     // ➀今日の日付情報を取得する。new Date()で取得する
     // ➁➀のデータから年を取得する。getfullyear()で取得する。
     // ⓷➁をnewget1の年に反映する。
-
     // ➀今日の日付情報を取得する。new Date()で取得する
     var today  =  new Date()
 
@@ -245,4 +244,43 @@
     // 代入しているが、すでに存在するデータを上書きしない(セミコロンで連結されるようになっている)
     document.cookie = `cookie=${a}`;     // 血圧データを入力したときにcookieを保存
   }
+
+    //for文ですべての配列にクラスを入れる
+   
+  for(var i = 0;  i < max.length; i++)
+  {
+
+    //すべての配列に.onchange入った。。？
+    max[i].onchange =   function(){
+      maxmax(max,"lastmax");
+      cookiecool();
+    }
+
+    min[i].onchange =  function(){
+      maxmax(min,"lastmin");
+      cookiecool();
+    }
+    pulse[i].onchange = function(){
+      maxmax(pulse,"lastpulse");
+      cookiecool();
+    }
+    nightmax[i].onchange =  function(){
+      maxmax(nightmax,"lastnightmax");
+      cookiecool();
+    }
+    nightmin[i].onchange =   function(){
+    maxmax(nightmin,"lastnightmin");
+    cookiecool();
+    }
+
+    
+    nightpulse[i].onchange =  function(){
+      maxmax(nightpulse,"lastpulse2");
+    cookiecool();
+    }
+
+  }
+
+
+
 })();

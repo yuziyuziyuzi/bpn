@@ -130,7 +130,7 @@
   /*-------------------------------------------------------------------*/
 
   // cookie関係
-  var cookiebox;                                                          // クッキーの値取得する変数
+  var cookiebox;                                                          // クッキーの値取得する変数 文字列である
   var cookieabc = [];
 
   // cookie処理
@@ -149,15 +149,19 @@
   cookieabc = cookiebox.split('=');
   
   // 3 左上のエディットボックスに反映  cookieの値を反映する
+  if(cookieabc[0] === "name" ){
   daymax[0].value = cookieabc[1];
-
+  }
   // 日付情報エディットボックス関係
   var get3 = [];                                                            // 変数宣言
   get3 = document.getElementsByClassName("day1")                            // エディットボックスの値を取得する day1はエディットボックス左上のこと
 
   // 日付情報初期化
   // 日付情報更新(左上の値に基づいて他のエディットボックスを更新する)
-  dayget();
+  if(cookieabc[0] === "name" ){
+    daymax[0].value = cookieabc[1];
+    dayget();
+  }
 
   // 関数呼ぶ
   cookiecool();  
@@ -185,6 +189,7 @@
     // 左上の日付情報を取得する
     // エディットボックスの要素.valueを参照することで、エディットボックスの入力情報を取得できる
     var newget1 = new Date(get3[0].value);  //☆　ここは３回覚えていない注意点　valueはエディットボックスに入力した値を取る
+    
 
     // 処理順
     // ➀今日の日付情報を取得する。new Date()で取得する

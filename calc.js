@@ -163,8 +163,8 @@
     dayget();
   }
 
-  // 関数呼ぶ
-  cookiecool();  
+  
+  // cookiecool();  
 
   // 左上の日付情報が変わったときの処理
   get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する

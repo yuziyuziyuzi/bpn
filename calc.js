@@ -156,8 +156,8 @@
   {
     cookieabc = cookiesplit[i].split('=');
    // 3 左上のエディットボックスに反映  cookieの値を反映する
-    if(cookieabc[i] === "name" ){
-    daymax[0].value = cookieabc[i];
+    if(cookieabc[0] === "name" ){
+    daymax[0].value = cookieabc[1];
     }
   }
   // 日付情報エディットボックス関係

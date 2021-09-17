@@ -162,7 +162,7 @@
     cookieabc = cookiesplit[i].split('=');
    // 3 左上のエディットボックスに反映  cookieの値を反映する
    console.log(cookieabc[0]);
-    if(cookieabc[0] === "name" ){
+    if((cookieabc[0] === "name")  || (cookieabc[0] === " name" )){
       daymax[0].value = cookieabc[1];
       dayget();
     }

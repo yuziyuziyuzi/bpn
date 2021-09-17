@@ -132,6 +132,11 @@
   // cookie関係
   var cookiebox;                                                          // クッキーの値取得する変数 文字列である
   var cookieabc = [];
+
+  // 日付情報エディットボックス関係
+  var get3 = [];                                                            // 変数宣言
+  get3 = document.getElementsByClassName("day1")                            // エディットボックスの値を取得する day1はエディットボックス左上のこと
+//deamaxとget3が同じでは
   
 
   // cookie処理
@@ -162,10 +167,7 @@
     }
    
   }
-  // 日付情報エディットボックス関係
-  var get3 = [];                                                            // 変数宣言
-  get3 = document.getElementsByClassName("day1")                            // エディットボックスの値を取得する day1はエディットボックス左上のこと
-
+  
 
   // 左上の日付情報が変わったときの処理
   get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する

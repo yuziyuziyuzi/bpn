@@ -157,19 +157,14 @@
     cookieabc = cookiesplit[i].split('=');
    // 3 左上のエディットボックスに反映  cookieの値を反映する
     if(cookieabc[0] === "name" ){
-    daymax[0].value = cookieabc[1];
+      daymax[0].value = cookieabc[1];
+      dayget();
     }
+   
   }
   // 日付情報エディットボックス関係
   var get3 = [];                                                            // 変数宣言
   get3 = document.getElementsByClassName("day1")                            // エディットボックスの値を取得する day1はエディットボックス左上のこと
-
-  // 日付情報初期化
-  // 日付情報更新(左上の値に基づいて他のエディットボックスを更新する)
-  if(cookieabc[0] === "name" ){
-    daymax[0].value = cookieabc[1];
-    dayget();
-  }
 
 
   // 左上の日付情報が変わったときの処理

@@ -132,6 +132,7 @@
   // cookie関係
   var cookiebox;                                                          // クッキーの値取得する変数 文字列である
   var cookieabc = [];
+  
 
   // cookie処理
   // cookieはセミコロン(;)で区切られている。
@@ -146,11 +147,18 @@
   // ２ cookieをばらして日にち情報を取得する
   // cookieabc[0]: cookie名
   // cookieabc[1]: データ
-  cookieabc = cookiebox.split('=');
-  
-  // 3 左上のエディットボックスに反映  cookieの値を反映する
-  if(cookieabc[0] === "name" ){
-  daymax[0].value = cookieabc[1];
+
+//splitは配列を返す。
+  var cookiesplit = cookiebox.split(';');
+
+  //このforではcookiesplitを=で分けてnameがある箇所を探して日にちを入れる。
+  for(var i  = 0; i < cookiesplit.length; i++)
+  {
+    cookieabc = cookiesplit[i].split('=');
+   // 3 左上のエディットボックスに反映  cookieの値を反映する
+    if(cookieabc[i] === "name" ){
+    daymax[0].value = cookieabc[i];
+    }
   }
   // 日付情報エディットボックス関係
   var get3 = [];                                                            // 変数宣言
@@ -163,8 +171,6 @@
     dayget();
   }
 
-  
-  // cookiecool();  
 
   // 左上の日付情報が変わったときの処理
   get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する

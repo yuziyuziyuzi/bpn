@@ -133,11 +133,6 @@
   var cookiebox;                                                          // クッキーの値取得する変数 文字列である
   var cookieabc = [];
 
-  // 日付情報エディットボックス関係
-  var get3 = [];                                                            // 変数宣言
-  get3 = document.getElementsByClassName("day1")                            // エディットボックスの値を取得する day1はエディットボックス左上のこと
-//deamaxとget3が同じでは
-  
 
   // cookie処理
   // cookieはセミコロン(;)で区切られている。
@@ -153,7 +148,7 @@
   // cookieabc[0]: cookie名
   // cookieabc[1]: データ
 
-//splitは配列を返す。
+//splitは配列を返す。;で区切る
   var cookiesplit = cookiebox.split(';');
 
   //このforではcookiesplitを=で分けてnameがある箇所を探して日にちを入れる。
@@ -161,8 +156,9 @@
   {
     cookieabc = cookiesplit[i].split('=');
    // 3 左上のエディットボックスに反映  cookieの値を反映する
-   console.log(cookieabc[0]);
-    if((cookieabc[0] === "name")  || (cookieabc[0] === " name" )){
+
+  
+    if((cookieabc[0] === "name") || (cookieabc[0] === " name" )){
       daymax[0].value = cookieabc[1];
       dayget();
     }
@@ -171,7 +167,7 @@
   
 
   // 左上の日付情報が変わったときの処理
-  get3[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する
+  daymax[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する
   {
     alert("!");  // これはテスト用
     document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
@@ -192,7 +188,7 @@
 
     // 左上の日付情報を取得する
     // エディットボックスの要素.valueを参照することで、エディットボックスの入力情報を取得できる
-    var newget1 = new Date(get3[0].value);  //☆　ここは３回覚えていない注意点　valueはエディットボックスに入力した値を取る
+    var newget1 = new Date(daymax[0].value);  //☆　ここは３回覚えていない注意点　valueはエディットボックスに入力した値を取る
     
 
     // 処理順
@@ -209,8 +205,8 @@
     newget1.setFullYear(yearget)
 
     // 列内の残りの日付を設定していく
-    // get3[0]は一番左上なので、iの初期値は1
-    for(var i = 1; i < get3.length; i++)        //ここで+1してるのは1からスタートしてるため
+    // daymax[0]は一番左上なので、iの初期値は1
+    for(var i = 1; i < daymax.length; i++)        //ここで+1してるのは1からスタートしてるため
     {
       // 日付情報を次の日に進める
       // newget1.getDate()日付を取得して+1することで次の日に設定できる
@@ -222,7 +218,7 @@
 
       // エディットボックス更新
       // エディットボックスの要素.valueに代入することで、エディットボックスの値を更新できる
-      get3[i].value =  month + "/" + date;      // ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
+      daymax[i].value =  month + "/" + date;      // ここではmonthとdateは値　"/" を入れ＋することで文字列を合体さしている。
     }
 
   }

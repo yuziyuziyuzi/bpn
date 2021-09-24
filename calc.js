@@ -108,7 +108,7 @@
 
     // ②①の情報をcookieに保存
     // cookie名はname
-    document.cookie = `name=${daymax[0].value}`; // cookieに値を保存     バッククォート使用 シフト＋＠  
+    document.cookie = `name=${daymax[0].value};max-age = 3000` // cookieに値を保存しcookieの寿命をmax-ageで設定  バッククォート使用 シフト＋＠  
     // ②終わり
     
     // ③1日ずつ進めながら、同じ列のエディットボックスをすべて埋めていく
@@ -157,19 +157,36 @@
     cookieabc = cookiesplit[i].split('=');
    // 3 左上のエディットボックスに反映  cookieの値を反映する
 
-  
     if((cookieabc[0] === "name") || (cookieabc[0] === " name" )){
-      daymax[0].value = cookieabc[1];
-      dayget();
+       daymax[0].value = cookieabc[1];
+       dayget();
     }
-   
+
+    // cookieデータの呼び出し血圧場所
+    else if((cookieabc[0] === "cookie") || (cookieabc[0] === " cookie" )){
+
+      let cookiecut = cookieabc[1].split(",");
+
+      for(let j = 0; j < max.length; j++){
+
+        max[j].value = cookiecut[6*j];
+        min[j].value = cookiecut[6*j+1];
+        pulse[j].value = cookiecut[6*j+2];
+        nightmax[j].value = cookiecut[6*j+3];
+        nightmin[j].value = cookiecut[6*j+4];
+        nightpulse[j].value = cookiecut[6*j+5];
+
+      }
+
+    }
+
   }
   
 
   // 左上の日付情報が変わったときの処理
   daymax[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する
   {
-    alert("!");  // これはテスト用
+    
     document.cookie = `name=${daymax[0].value}`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
 
     dayget();                                     // 関数呼ぶ
@@ -213,8 +230,8 @@
       newget1.setDate(newget1.getDate() + 1);   // これはtodayに１足している　　これをそのまま代入するとミリ秒単位ででる
 
       // 設定した日付情報から月と日を取得
-      var month  = newget1.getMonth()+1;        // 現在の月の数字を取得＋1は0から開始のため
-      var date　 = newget1.getDate();           // 現在の日を取得ここは＋１いらない
+      var month = newget1.getMonth()+1;        // 現在の月の数字を取得＋1は0から開始のため
+      var date = newget1.getDate();           // 現在の日を取得ここは＋１いらない
 
       // エディットボックス更新
       // エディットボックスの要素.valueに代入することで、エディットボックスの値を更新できる
@@ -256,12 +273,12 @@
   {
 
     //すべての配列に.onchange入った。。？
-    max[i].onchange =   function(){
+    max[i].onchange = function(){
       maxmax(max,"lastmax");
       cookiecool();
     }
 
-    min[i].onchange =  function(){
+    min[i].onchange = function(){
       maxmax(min,"lastmin");
       cookiecool();
     }
@@ -269,19 +286,20 @@
       maxmax(pulse,"lastpulse");
       cookiecool();
     }
-    nightmax[i].onchange =  function(){
+
+    nightmax[i].onchange = function(){
       maxmax(nightmax,"lastnightmax");
       cookiecool();
     }
-    nightmin[i].onchange =   function(){
-    maxmax(nightmin,"lastnightmin");
-    cookiecool();
+
+    nightmin[i].onchange = function(){
+      maxmax(nightmin,"lastnightmin");
+      cookiecool();
     }
 
-    
     nightpulse[i].onchange =  function(){
       maxmax(nightpulse,"lastpulse2");
-    cookiecool();
+      cookiecool();
     }
 
   }

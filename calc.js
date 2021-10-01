@@ -73,6 +73,11 @@
     
         // 平均値のエディットボックスの値を更新
         document.getElementById( output ).value = answer;
+      } else  //平均箇所に値を入れないようにする
+      {
+
+        document.getElementById( output ).value = 0; 
+
       }
 
   }

@@ -73,7 +73,7 @@
     
         // 平均値のエディットボックスの値を更新
         document.getElementById( output ).value = answer;
-      } else  //平均箇所に値を入れないようにする
+      } else  //表にデータがないときは0を設定する。
       {
 
         document.getElementById( output ).value = 0; 
@@ -117,7 +117,7 @@
 
     // ②①の情報をcookieに保存
     // cookie名はname
-    document.cookie = `name=${daymax[0].value};max-age=1,728,000` // cookieに値を保存しcookieの寿命をmax-ageで設定  バッククォート使用 シフト＋＠  
+    document.cookie = `name=${daymax[0].value};max-age=1728000` // cookieに値を保存しcookieの寿命をmax-ageで設定  バッククォート使用 シフト＋＠  
     // ②終わり
     
     // ③1日ずつ進めながら、同じ列のエディットボックスをすべて埋めていく
@@ -207,7 +207,7 @@
   daymax[0].onchange = function() // onchangeで日にち箇所にデータを入れるとイベント発生する
   {
     
-    document.cookie = `name=${daymax[0].value};max-age=1,728,000`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
+    document.cookie = `name=${daymax[0].value};max-age=1728000`;  // cookieに値を保存     バッククォート使用 シフト＋＠  
 
     dayget();        // 日付情報更新                             
     cookiecool();   // 血圧・心拍数データをcookieに保存する
@@ -283,7 +283,7 @@
     // cookieにデータを保存
     // cookieにデータを保存するときは、「cookie名=データ」の形でdocument.cookieに代入する
     // 代入しているが、すでに存在するデータを上書きしない(セミコロンで連結されるようになっている)
-    document.cookie = `cookie=${a}max-age=1,728,000`;     // 血圧データを入力したときにcookieを保存
+    document.cookie = `cookie=${a}max-age=1728000`;     // 血圧データを入力したときにcookieを保存
   }
 
     //for文ですべての配列にクラスを入れて値を入れてcookieに記憶する

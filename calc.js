@@ -70,9 +70,12 @@
       {
         // 平均出して代入
         answer = sum/num;
+
+        //四捨五入する
+        let Rounding = Math.round(answer) ;
     
         // 平均値のエディットボックスの値を更新
-        document.getElementById( output ).value = answer;
+        document.getElementById( output ).value = Rounding;
       } else  //表にデータがないときは0を設定する。
       {
 
